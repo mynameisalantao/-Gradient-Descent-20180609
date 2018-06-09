@@ -1,0 +1,55 @@
+#include<iostream>
+#include<fstream> 
+#include<cstdlib>
+const int data_members=9;                   //data_members為training data的數量 
+int main(){
+	using namespace std;
+	double training_data_x[data_members];   //陣列 training_data_x[]儲存輸入的 training data
+	double training_data_y[data_members];   //陣列 training_data_y[]儲存輸出的 training data 
+	//與文字檔建立關聯 
+	ifstream infile;               
+	infile.open("test20180609-1.txt");
+	if(!infile.is_open()){                  //檢查有無成功開啟檔案 
+		cout<<"Can't open it";
+		exit(EXIT_FAILURE);
+	}
+	//將文字檔內資料依序存入 陣列 training_data_x[]和 陣列 training_data_y[]
+	for(int i=0;i<=data_members;i++){
+		infile>>training_data_x[i];
+		infile.get();
+		infile>>training_data_y[i];
+		infile.get();
+	}
+	
+	double weight,bias;                   //weight為權重  bias為偏差 
+	double lossfunction_partial_weight;   //權重對誤差函數進行偏微的結果 
+	double lossfunction_partial_bias;     //偏差對誤差函數進行偏微的結果  
+	double current_weight=2;              //當前的weight權重  預設為2 
+	double current_bias=5;                //當前的bias權重  預設為5
+	double learning_rate=0.001;	          //學習率learning rate  預設為0.001
+	 
+	for(int j=0;j<=800;j++){                //j為執行的次數  決定修正weight與bias多少次 
+		lossfunction_partial_weight=0;
+		lossfunction_partial_bias=0;
+		for(int i=0;i<=data_members;i++){
+			lossfunction_partial_weight=lossfunction_partial_weight\
+			-2*training_data_x[i]*training_data_y[i]\
+			+2*current_bias*training_data_x[i]\
+			+2*current_weight*training_data_x[i]*training_data_x[i];
+		}
+		cout<<lossfunction_partial_weight<<" ";                //目前權重對誤差函數進行偏微的結果 
+		for(int i=0;i<=data_members;i++){
+			lossfunction_partial_bias=lossfunction_partial_bias\
+			-2*training_data_y[i]\
+			+2*current_bias\
+			+2*current_weight*training_data_x[i];
+		}
+		cout<<lossfunction_partial_bias<<" ";                 //目前偏差對誤差函數進行偏微的結果 
+		current_weight=current_weight-learning_rate*lossfunction_partial_weight;
+		current_bias=current_bias-learning_rate*lossfunction_partial_bias;
+		cout<<current_weight<<" ";                            //當前的weight權重 
+	    cout<<current_bias<<endl;                             //當前的bias權重 
+	}
+	
+	return 0;
+}
