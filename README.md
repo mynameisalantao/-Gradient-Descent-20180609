@@ -46,7 +46,7 @@ Regression: Output a scalar
 >>L(f)=sigma(n=0~9) (Yn-(b+w*Xn))^2<br />
 而Goodness of function 則是找到w與b始得Loss function最小<br />
 >>𝜕𝐿/𝜕𝑤=sigma(n=0~9) 2(Yn-f(Xn))(-Xn)<br />
->>𝜕𝐿/𝜕𝑏=sigma(n=0~9) 2(Yn-f(Xn))(-1)<br />
+>>𝜕𝐿/𝜕𝑏=sigma(n=0~9) 2(Yn-f(Xn))(-1)<br />  
 接著修正<br />
 >>𝑤1 ← 𝑤0 −𝜂𝜕𝐿/𝜕𝑤|𝑤=𝑤0,𝑏=𝑏0<br />
 >>𝑏1 ← 𝑏0 −𝜂𝜕𝐿/𝜕𝑏|𝑤=𝑤0,𝑏=𝑏0<br />
@@ -79,7 +79,7 @@ Regression: Output a scalar
 >lossfunction_partial_bias=-0.665702<br />
 >current_weight=3.11964<br />
 >current_bias=9.68881<br />
-可以發現current_weight與current_bias已經非常接近預設的 3 和 5 了~!<br />
+可以發現current_weight與current_bias已經非常接近預設的 3 和 10 了~!<br />
 
 
 
