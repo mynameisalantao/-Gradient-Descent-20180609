@@ -16,12 +16,34 @@
 >9   39<br />
 >10  40<br />
 其中左邊數字為輸入值 *x* 右邊數字為輸入值 *y*<br />
+利用如下程式與檔案進行連結，並確認是否讀取成功
+-----------------------------------------------
+>ifstream infile;     <br />          
+>infile.open("test20180609-1.txt");<br />
+>if(!infile.is_open()){      <br />            
+>      cout<<"Can't open it";<br />
+>      exit(EXIT_FAILURE);<br />
+>}<br />
+接著將文字檔內資料依序存入 陣列 training_data_x[]和 陣列 training_data_y[]<br />
+-------------------------------------------------------------------------------
+>for(int i=0;i<=data_members;i++){<br />
+>       infile>>training_data_x[i];<br />
+> 	infile.get();<br />
+> 	infile>>training_data_y[i];<br />
+> 	infile.get();<br />
+	} <br />
 
 
 
->double training_data_x[data_members];   
->double training_data_y[data_members];  
-	
+
+Regression: Output a scalar
+======================================
+建立模型  *y = b + w ∙ x*<br />
+將training_data_x的資料輸入A set of function 得到的解，與training_data_y做比較<br />
+比較方法便是算出loss function<br />
+
+
+
   
   
 <br />
