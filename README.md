@@ -69,33 +69,33 @@ Regression: Output a scalar
 	lossfunction_partial_weight=0;<br />
 	lossfunction_partial_bias=0;<br />
 	for(int i=0;i<=data_members;i++){<br />
-		lossfunction_partial_weight=lossfunction_partial_weight\<br />
-		-2*training_data_x[i]*training_data_y[i]\<br />
-		+2*current_bias*training_data_x[i]\<br />
-		+2*current_weight*training_data_x[i]*training_data_x[i];<br />
-	}	            <br />
-	for(int i=0;i<=data_members;i++){<br />
-		lossfunction_partial_bias=lossfunction_partial_bias\<br />
-		-2*training_data_y[i]\<br />
-		+2*current_bias\<br />
-		+2*current_weight*training_data_x[i];<br />
-	}		                <br />
-	current_weight=current_weight-learning_rate*lossfunction_partial_weight;<br />
-	current_bias=current_bias-learning_rate*lossfunction_partial_bias;<br />
-}<br />
+		lossfunction_partial_weight=lossfunction_partial_weight\
+		-2*training_data_x[i]*training_data_y[i]\
+		+2*current_bias*training_data_x[i]\
+		+2*current_weight*training_data_x[i]*training_data_x[i];
+	}	          
+	for(int i=0;i<=data_members;i++){
+		lossfunction_partial_bias=lossfunction_partial_bias\
+		-2*training_data_y[i]\
+		+2*current_bias\
+		+2*current_weight*training_data_x[i];
+	}		                
+	current_weight=current_weight-learning_rate*lossfunction_partial_weight;
+	current_bias=current_bias-learning_rate*lossfunction_partial_bias;
+}
 
 從原本先預設<br />
 
->double current_weight=2;       <br />   
->double current_bias=5;  <br />
+>double current_weight=2;     
+>double current_bias=5;  
 
 經過800次的Gradient Descent修正後<br /> 
 得到結果如下:<br /> 
 
->lossfunction_partial_weight=0.0596218<br />
->lossfunction_partial_bias=-0.665702<br />
->current_weight=3.11964<br />
->current_bias=9.68881<br />
+>lossfunction_partial_weight=0.0596218
+>lossfunction_partial_bias=-0.665702
+>current_weight=3.11964
+>current_bias=9.68881
 
 可以發現current_weight與current_bias已經非常接近預設的 3 和 10 了~!<br />
 
