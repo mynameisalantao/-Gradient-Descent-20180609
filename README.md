@@ -44,18 +44,18 @@ Regression: Output a scalar
 ---------------------------------------
 
 將training_data_x的資料輸入A set of function 得到的解，與training_data_y做比較<br />
-比較方法便是算出loss function<br />
+比較方法便是算出*loss function*<br />
 
->>L(f)=sigma(n=0~9) (Yn-f(Xn))^2<br />
+>>L(f)=sigma(n=0->9) (Yn-f(Xn))^2<br />
 
 代入 Y = b + w ∙ X<br />
 
->>L(f)=sigma(n=0~9) (Yn-(b+w*Xn))^2<br />
+>>L(f)=sigma(n=0->9) (Yn-(b+w*Xn))^2<br />
 
 而Goodness of function 則是找到w與b始得Loss function最小<br />
 
->>𝜕𝐿/𝜕𝑤=sigma(n=0~9) 2(Yn-f(Xn))(-Xn)<br />
->>𝜕𝐿/𝜕𝑏=sigma(n=0~9) 2(Yn-f(Xn))(-1)<br />  
+>> 𝜕𝐿/𝜕𝑤 =sigma(n=0->9) 2(Yn-f(Xn))(-Xn)
+>> 𝜕𝐿/𝜕𝑏 =sigma(n=0->9) 2(Yn-f(Xn))(-1)
 
 接著修正<br />
 
