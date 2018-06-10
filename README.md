@@ -116,7 +116,9 @@ Regression: Output a scalar
 於是我改成設立2個learning_rate <br />
 其中w的learning_rate不變，而b的learning_rate調大 <br />
 測試後發現可以完全收斂了~ 表示要應付大斜率的函數，可能要考慮使用2個learning_rate <br />
-當然這種近似方法還有許多問題，等之後學習更深入後再來修正~~
+當然這種近似方法還有許多問題，等之後學習更深入後再來修正~~ <br />
+PS.修正後程式碼可參考Ver2.0
+
 
 
 
