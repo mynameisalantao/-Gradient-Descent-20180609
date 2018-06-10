@@ -54,7 +54,7 @@ Regression: Output a scalar
 
 而Goodness of function 則是找到w與b始得Loss function最小<br />
 
->> 𝜕𝐿/𝜕𝑤 =sigma(n=0->9) 2(Yn-f(Xn))(-Xn)
+>> 𝜕𝐿/𝜕𝑤 =sigma(n=0->9) 2(Yn-f(Xn))(-Xn) <br />
 >> 𝜕𝐿/𝜕𝑏 =sigma(n=0->9) 2(Yn-f(Xn))(-1)
 
 接著修正<br />
@@ -92,15 +92,29 @@ Regression: Output a scalar
 經過800次的Gradient Descent修正後<br /> 
 得到結果如下:<br /> 
 
->lossfunction_partial_weight=0.0596218
->lossfunction_partial_bias=-0.665702
->current_weight=3.11964
->current_bias=9.68881
+>lossfunction_partial_weight=0.0596218 <br />
+>lossfunction_partial_bias=-0.665702 <br />
+>current_weight=3.11964 <br />
+>current_bias=9.68881 <br />
 
 可以發現current_weight與current_bias已經非常接近預設的 3 和 10 了~!<br />
 
 
-
+後記
+================
+後來套入別的Train data 使用斜率更大的函數<br />
+卻發現利用Gradient無法收斂到該函數<br />
+檢查lossfunction_partial_weight與lossfunction_partial_bias <br />
+到後面完全呈現發散狀態<br />
+可能是起始位置w0與b0跟函數差距過大<br />
+先稍微修改w0與b0後，lossfunction_partial_weight與lossfunction_partial_bias可以逐漸收斂<br />
+但結果仍是不理想<br />
+在檢查發現lossfunction_partial_weight能夠收斂到1以下<br />
+但lossfunction_partial_bias雖然有收斂趨勢，但非常緩慢，需要好幾倍的修正次數<br />
+於是我改成設立2個learning_rate <br />
+其中w的learning_rate不變，而b的learning_rate調大 <br />
+測試後發現可以完全收斂了~ 表示要應付大斜率的函數，可能要考慮使用2個learning_rate <br />
+當然這種近似方法還有許多問題，等之後學習更深入後再來修正~~
 
 
 
