@@ -57,7 +57,7 @@ Regression: Output a scalar
 而Goodness of function 則是找到w與b始得Loss function最小
 
 <pre><code>𝜕𝐿/𝜕𝑤 =sigma(n=0->9) 2(Yn-f(Xn))(-Xn) 
-<pre><code>𝜕𝐿/𝜕𝑏 =sigma(n=0->9) 2(Yn-f(Xn))(-1)</pre></code>
+𝜕𝐿/𝜕𝑏 =sigma(n=0->9) 2(Yn-f(Xn))(-1)</pre></code>
 
 接著修正
 
