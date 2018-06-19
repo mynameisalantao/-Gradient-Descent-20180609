@@ -1,7 +1,5 @@
-使用Gradient Descent求線性方程20180609(原創)
+使用 C++ Gradient Descent求線性方程20180609(原創)
 ===============================================
-想法來源:Hung-yi Lee老師機器學習線上課程
-----------------------------------------------
 程式語言:使用C++   撰寫:Alan Tao  參考:無
 ----------------------------------------------
 程式執行前先在相同目錄下建立記事本 *test20180609-1.txt*<br />
@@ -116,11 +114,52 @@ current_bias=9.68881 </pre></code>
 其中w的learning_rate不變，而b的learning_rate調大 <br />
 測試後發現可以完全收斂了~ 表示要應付大斜率的函數，可能要考慮使用2個learning_rate <br />
 當然這種近似方法還有許多問題，等之後學習更深入後再來修正~~ <br />
-PS.修正後程式碼可參考Ver2.0
+PS.修正後程式碼可參考Ver2.0 <br />
+
+使用 C++ Gradient Descent求線性方程20180619
+=============================================
+首先載入模塊
+<pre><code>import tensorflow as tf  
+import numpy as np</pre></code>
+接著自己設計training data數值<br />
+x_data生成100個服從均勻分布的0~50數值<br />
+y_data為=x_data*3+10+微小的擾動亂數在0~1之間
+<pre><code>x_data=(np.random.rand(100))*50
+y_data=x_data*3+10+(np.random.rand(100))</pre></code>
+定義變量要用到variable，用隨機數列生成來生成參數<br />
+random_uniform([Weights為1維結構],隨機數列Weights生成範圍為-1~1)
+<pre><code>tf.Variable(initializer,name)</pre></code>
+初始化參數可以有tf.random_normal,tf.constant,而name為變量名稱
+<pre><code>Weights=tf.Variable(tf.random_uniform([1],-1.0,1.0))</pre></code>
+biases初始值為5
+<pre><code>biases=tf.Variable(tf.constant(5,dtype=tf.float32))</pre></code>
+
+預測的y
+<pre><code>y=Weights*x_data+biases</pre></code>
+計算預測y(y_guess)的與實際的y(y_data)的差別<br />
+tf.square(x)	计算平方 (y = x * x = x^2).<br />
+tf.reduce_mean(input_tensor)	求tensor中平均值
+<pre><code>loss=tf.reduce_mean(tf.square(y-y_data))</pre></code>
+使用優化器 使用gradient descent (學習率)
+<pre><code>optimizer=tf.train.GradientDescentOptimizer(0.001)</pre></code>
+優化的目的是要來減少某個參數(loss)
+<pre><code>train=optimizer.minimize(loss)</pre></code>
+
+初始化
+<pre><code>init=tf.global_variables_initializer()</pre></code>
+
+session如指針 指向要處理的地方
+<pre><code>sess=tf.Session()</pre></code>
+讓init被激活
+<pre><code>sess.run(init)</pre></code>
+<pre><code>for step in range(6000):
+    sess.run(train)
+    #每訓練100次就印出結果
+    if step%100==0:
+        print(step,sess.run(Weights),sess.run(biases))</pre></code>
+最後結果為
+<pre><code>5900 [3.0030675] 10.331805<pre><code>
+也算接近了........
+![Imgur](https://i.imgur.com/NjD7mMJ.png)
 
 
-
-
-  
-  
-<br />
