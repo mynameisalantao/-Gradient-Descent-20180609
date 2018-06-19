@@ -123,7 +123,7 @@ PS.修正後程式碼可參考Ver2.0 <br />
 import numpy as np</pre></code>
 接著自己設計training data數值<br />
 x_data生成100個服從均勻分布的0~50數值<br />
-y_data為=x_data*3+10+微小的擾動亂數在0~1之間
+y_data為=x_data* 3+10 微小的擾動在0~1之間
 <pre><code>x_data=(np.random.rand(100))*50
 y_data=x_data*3+10+(np.random.rand(100))</pre></code>
 定義變量要用到variable，用隨機數列生成來生成參數<br />
@@ -158,7 +158,7 @@ session如指針 指向要處理的地方
     if step%100==0:
         print(step,sess.run(Weights),sess.run(biases))</pre></code>
 最後結果為
-<pre><code>5900 [3.0030675] 10.331805<pre><code>
+<pre><code>5900 [3.0030675] 10.331805</pre></code>
 也算接近了........
 ![Imgur](https://i.imgur.com/NjD7mMJ.png)
 
