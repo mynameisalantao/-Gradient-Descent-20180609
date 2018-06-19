@@ -1,0 +1,29 @@
+#載入模塊
+import tensorflow as tf  
+import numpy as np
+
+#建立training data
+x_data=(np.random.rand(100))*50
+y_data=x_data*3+10+(np.random.rand(100))
+
+#產生Weight與bias與預期產生的輸出y
+Weights=tf.Variable(tf.random_uniform([1],-1.0,1.0))
+biases=tf.Variable(tf.constant(5,dtype=tf.float32))
+y=Weights*x_data+biases
+
+#定義Loss function
+loss=tf.reduce_mean(tf.square(y-y_data))
+
+#建立結構
+optimizer=tf.train.GradientDescentOptimizer(0.001)
+train=optimizer.minimize(loss)
+init=tf.global_variables_initializer()
+sess=tf.Session()
+sess.run(init)
+
+#開始訓練
+for step in range(6000):
+    sess.run(train)
+    #每訓練100次就印出結果
+    if step%100==0:
+        print(step,sess.run(Weights),sess.run(biases))
