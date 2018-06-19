@@ -152,6 +152,7 @@ session如指針 指向要處理的地方
 <pre><code>sess=tf.Session()</pre></code>
 讓init被激活
 <pre><code>sess.run(init)</pre></code>
+最後開始進行訓練
 <pre><code>for step in range(6000):
     sess.run(train)
     #每訓練100次就印出結果
