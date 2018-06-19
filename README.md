@@ -116,7 +116,7 @@ current_bias=9.68881 </pre></code>
 當然這種近似方法還有許多問題，等之後學習更深入後再來修正~~ <br />
 PS.修正後程式碼可參考Ver2.0 <br />
 
-使用 C++ Gradient Descent求線性方程20180619
+使用  Gradient Descent求線性方程20180619
 =============================================
 首先載入模塊
 <pre><code>import tensorflow as tf  
